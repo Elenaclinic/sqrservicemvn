@@ -2,36 +2,20 @@ package ru.netology.sqr.sqrservicemvn.services;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import ru.netology.sqr.sqrservicemvn.services.SQRService;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
+
 
 public class SQRServiceTest {
 
-    @Test
-    public void shouldCalcExact() {
+    @ParameterizedTest
+    @CsvFileSource(files="src/test/resources/SQR.csv")
+    public void shouldCalcExact(int expected, int x, int y) {
         SQRService service = new SQRService();
 
-        int expected = 3;
-        int actual = service.calcSQR(200, 300);
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldCalcInexact() {
-        SQRService service = new SQRService();
-
-        int expected = 4;
-        int actual = service.calcSQR(196, 300);
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldCalcInexact1() {
-        SQRService service = new SQRService();
-
-        int expected = 2;
-        int actual = service.calcSQR(200, 288);
+        //int expected = 3;
+        int actual = service.calcSQR(x, y);
 
         Assertions.assertEquals(expected, actual);
     }

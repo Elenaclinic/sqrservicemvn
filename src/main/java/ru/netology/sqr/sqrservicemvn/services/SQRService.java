@@ -11,6 +11,4 @@ public class SQRService {
         }
         return total;
     }
-
-
 }
